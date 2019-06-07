@@ -1,0 +1,41 @@
+from IPython.display import clear_output
+def print_board(board):
+    clear_output()
+    print("",board[0],"|",board[1],"|",board[2])
+    print("___________")
+    print("",board[3],"|",board[4],"|",board[5])
+    print("___________")
+    print("",board[6],"|",board[7],"|",board[8])
+    print("")
+board1=[" "]*10
+print_board(board1)
+turn=0
+def movex():
+    indx=int(input('Enter the index of X : '))
+    if board1[indx-1]==" ":
+        board1[indx-1]='X'
+        print_board(board1)
+    else:
+        print("Invalid Move")
+def moveo():
+    indo=int(input('Enter the index of O : '))
+    if board1[indo-1]==" ":
+        board1[indo-1]='O'
+        print_board(board1)
+    else:
+        print("Invalid Move") 
+def check_win():
+    if (board1[0]==board1[1]==board1[2]=='X') or (board1[3]==board1[4]==board1[5]=='X') or (board1[6]==board1[7]==board1[8]=='X') or (board1[0]==board1[3]==board1[6]=='X') or (board1[1]==board1[4]==board1[7]=='X') or (board1[2]==board1[5]==board1[8]=='X' or (board1[0]==board1[4]==board1[8]=='X') or (board1[2]==board1[4]==board1[6]=='X')):
+        print('X wins!')
+    elif (board1[0]==board1[1]==board1[2]=='O') or (board1[3]==board1[4]==board1[5]=='O') or (board1[6]==board1[7]==board1[8]=='O') or (board1[0]==board1[3]==board1[6]=='O') or (board1[1]==board1[4]==board1[7]=='O') or (board1[2]==board1[5]==board1[8]=='O' or (board1[0]==board1[4]==board1[8]=='O') or (board1[2]==board1[4]==board1[6]=='O')):
+        print("O wins!")
+while turn<10:
+    turn=turn+1
+    if turn==9:
+        print("GAME DRAW")
+    elif turn%2!=0:
+        movex()
+        check_win()
+    elif turn%2==0:
+        moveo()
+        check_win()
